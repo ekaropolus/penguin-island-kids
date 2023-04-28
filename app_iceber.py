@@ -4,6 +4,16 @@ import numpy as np
 import altair as alt
 from PIL import Image
 
+# Add a history section
+st.header('Iceberg Melting: A Brief History')
+# Define two columns
+col1, col2 = st.columns(2)
+col1.write('The effects of melting icebergs have been observed and studied for many years. Scientists have documented a significant increase in sea levels, as well as changes in ocean temperatures and circulation patterns.')
+# Add an image to the right column
+col2.image('iceberg.jpg', use_column_width=True)
+st.write('One of the earliest observations of melting icebergs was made by the British explorer James Cook, who noted the presence of large icebergs in the South Pacific in the late 18th century. Since then, scientists have documented a steady decline in the size and number of icebergs around the world, particularly in the Arctic and Antarctic regions.')
+st.write('The melting of icebergs has significant implications for sea level rise, which threatens to flood coastal cities and low-lying areas. It also has a profound impact on marine ecosystems and the organisms that depend on them, including fish, birds, and marine mammals.')
+
 # Load the data
 iceberg_data = pd.read_csv('https://raw.githubusercontent.com/datasets/sea-level-rise/master/data/epa-sea-level.csv')
 iceberg_data['Year'] = pd.to_datetime(iceberg_data['Year'], format='%Y')
@@ -37,14 +47,6 @@ chart = alt.Chart(chart_data).mark_line().encode(
 )
 st.altair_chart(chart)
 
-# Add a history section
-st.header('Iceberg Melting: A Brief History')
-
-st.write('The effects of melting icebergs have been observed and studied for many years. Scientists have documented a significant increase in sea levels, as well as changes in ocean temperatures and circulation patterns.')
-
-st.write('One of the earliest observations of melting icebergs was made by the British explorer James Cook, who noted the presence of large icebergs in the South Pacific in the late 18th century. Since then, scientists have documented a steady decline in the size and number of icebergs around the world, particularly in the Arctic and Antarctic regions.')
-
-st.write('The melting of icebergs has significant implications for sea level rise, which threatens to flood coastal cities and low-lying areas. It also has a profound impact on marine ecosystems and the organisms that depend on them, including fish, birds, and marine mammals.')
 
 # Add a legend to the sidebar
 st.sidebar.write("<div style='text-align: center; font-size: small;'>App creada por los fabulosos cientificos de datos de la AMEA.</div>", unsafe_allow_html=True)
